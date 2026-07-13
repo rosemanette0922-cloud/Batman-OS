@@ -7,31 +7,45 @@
 
 <style>
 body{
+body{
     margin:0;
     background:#000;
     color:#39ff14;
-    font-family:Consolas, monospace;
+    font-family:Consolas,monospace;
+    overflow:hidden;
 }
 
 #terminal{
     padding:25px;
     white-space:pre-wrap;
     font-size:16px;
+    height:100vh;
+    overflow-y:auto;
 }
 
 button{
     background:#39ff14;
     color:black;
     border:none;
-    padding:12px 18px;
+    padding:12px 22px;
     border-radius:8px;
-    font-size:16px;
     cursor:pointer;
-    margin-top:20px;
+    font-size:16px;
+    transition:.3s;
 }
 
 button:hover{
-    opacity:0.9;
+    transform:scale(1.05);
+}
+
+.cursor{
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
 }
 </style>
 </head>
@@ -45,47 +59,93 @@ button:hover{
 const terminal=document.getElementById("terminal");
 
 const lines=[
-"WAYNE ENTERPRISES",
-"",
-"CONFIDENTIAL",
-"",
-"Property of:",
-"Batman 🦇",
-"",
-"Security Clearance Required...",
-"",
-"$ sudo boot BatmanOS",
-"",
-"Initializing system...",
-"Loading memories...",
-"Connecting to Batcomputer...",
-"Verifying identity...",
-"",
-"████████████████████ 100%",
-"",
-"ACCESS GRANTED ✓",
-"",
-"Scanning Batman...",
-"",
-"Exam Stress............. DETECTED 📚",
-"Three Wheel............ UNDER REPAIR 🛺",
-"Family Pressure........ HIGH",
-"Strength............... EXCEPTIONAL 💪",
-"Heart.................. RESERVED ❤️",
-"",
-"Favourite Person...",
-"Loading...",
-"Loading...",
-"❤️ Catwoman 🐈‍⬛",
-"",
-"Searching happiness...",
-"FOUND ❤️",
-"",
-"1 encrypted file found.",
-"",
-"love_letter.txt"
-];
+const lines=[
 
+"WAYNE ENTERPRISES",
+
+"",
+
+"BATCOMPUTER OS v2.0",
+
+"",
+
+"════════════════════════════",
+
+"",
+
+"$ sudo boot BatmanOS",
+
+"",
+
+"Loading Wayne Enterprise Systems...",
+
+"Loading Batcomputer...",
+
+"Connecting to Gotham Servers...",
+
+"Checking Secure Files...",
+
+"Decrypting Memories...",
+
+"",
+
+"████████████████████ 100%",
+
+"",
+
+"✓ Identity Verified",
+
+"",
+
+"ACCESS GRANTED",
+
+"",
+
+"> Welcome back Batman 🦇",
+
+"",
+
+"Running Diagnostics...",
+
+"",
+
+"Exam Stress.............. DETECTED 📚",
+
+"Three Wheel............. UNDER REPAIR 🛺",
+
+"Family Pressure......... HIGH",
+
+"Coffee Level............ LOW ☕",
+
+"Strength................ MAXIMUM 💪",
+
+"Heart................... RESERVED ❤️",
+
+"",
+
+"Searching for happiness...",
+
+"",
+
+"FOUND ❤️",
+
+"",
+
+"Favourite Person........ Catwoman 🐈‍⬛",
+
+"",
+
+"1 encrypted file detected.",
+
+"",
+
+"love_letter.txt",
+
+"",
+
+"Status : READY"
+
+];
 let i=0;
 
 function typeLine(){
@@ -93,6 +153,8 @@ function typeLine(){
     if(i<lines.length){
 
         terminal.innerHTML+=lines[i]+"<br>";
+
+terminal.scrollTop=terminal.scrollHeight;
 
         i++;
 
