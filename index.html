@@ -166,7 +166,7 @@ terminal.scrollTop=terminal.scrollHeight;
 
         btn.innerHTML="🔐 Decrypt File";
 
-        btn.onclick=function(){
+        btn.onclick=decryptFile;
 
             alert("Batman OS Part 2 Coming Soon 🌌");
 
@@ -177,7 +177,80 @@ terminal.scrollTop=terminal.scrollHeight;
     }
 
 }
+function decryptFile(){
 
+    terminal.innerHTML="";
+
+    terminal.style.transition="1.5s";
+    terminal.style.background="black";
+    terminal.style.color="white";
+
+    setTimeout(function(){
+
+        terminal.innerHTML=`
+        <div style="text-align:center;padding-top:40px;">
+            <h1>🌌</h1>
+            <h2>Decrypting love_letter.txt...</h2>
+            <p>Please wait...</p>
+        </div>
+        `;
+
+        setTimeout(function(){
+
+            terminal.innerHTML=`
+            <div style="text-align:center;padding:40px;max-width:700px;margin:auto;color:white;line-height:1.8;">
+                <h1>🦇 Dear Batman,</h1>
+
+                <h1>🦇 To my loving Batman 🖤🦇</h1>
+
+<p>
+I know everything feels so hard these days—your exams, the three-wheeler, family problems... it must all feel like too much sometimes. 🫠❤️‍🩹
+</p>
+
+<p>
+But I want you to know that I'm here with you, no matter what, babyy. 🥹🫂 Through better or worse, ups or downs, sickness or health, happiness or sadness—whether you're angry, tired, frustrated, or overwhelmed—I'll always be by your side. 🥰🤍 You've got me, Chuti bbh. 🫂💗
+</p>
+
+<p>
+I believe in you. 😌🤍 I love you, patiyoo. 😘💖 No matter how things turn out, I know my baby gave it his very best, and I'm already so proud of you. 🥳💘
+</p>
+
+<p>
+You are the strongest, most responsible gentleman I know. You're my hero, my 🐲, my Batman, my Chuti bbh. 🤗💗 Always. 🖤🤍
+</p>
+
+<p>
+Now go and conquer those exams. I'll be right here, cheering for you every step of the way until I can finally hug you again. 🥹❤️
+</p>
+
+<p>
+To be expected... 😚💕💋
+<br>
+Lots of kisses and cuddles next time.
+</p>
+
+<br>
+
+<h2>With love and lots of kisses, 😚💕💋</h2>
+
+<h3>Yours, forever ♾️</h3>
+
+<h2>Chuti ammi 🐣</h2>
+
+<br><br>
+
+<small>
+Developed with ❤️ by Catwoman
+</small>
+
+            </div>
+            `;
+
+        },2500);
+
+    },1000);
+
+}
 typeLine();
 
 </script>
