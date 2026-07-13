@@ -7,7 +7,36 @@
 
 <title>Batman OS v2.0</title>
 
-<style>
+#stars{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:0.2;
+        transform:scale(1);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.8);
+    }
+}<style>
 
 *{
     margin:0;
@@ -82,6 +111,7 @@ button:hover{
 
 <body>
 
+<div id="stars"></div>
 <div id="terminal"></div>
 
 <script>
@@ -153,7 +183,14 @@ function typeLine(){
 
         btn.innerHTML = "🔐 Decrypt File";
 
-        btn.onclick = decryptFile;
+btn.onclick=function(){
+
+    btn.disabled=true;
+    btn.innerHTML="Decrypting...";
+
+    decryptFile();
+
+};
 
         terminal.appendChild(btn);
 
@@ -221,7 +258,21 @@ Developed with ❤️ by Catwoman
 
 </div>
 `;
-}typeLine();
+for(let i=0;i<120;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"vw";
+
+    star.style.top=Math.random()*100+"vh";
+
+    star.style.animationDelay=Math.random()*2+"s";
+
+    document.getElementById("stars").appendChild(star);
+
+}}typeLine();
 
 </script>
 
