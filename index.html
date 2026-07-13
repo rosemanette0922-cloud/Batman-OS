@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batman OS</title>
+
+<style>
+body{
+    margin:0;
+    background:#000;
+    color:#39ff14;
+    font-family:Consolas, monospace;
+}
+
+#terminal{
+    padding:25px;
+    white-space:pre-wrap;
+    font-size:16px;
+}
+
+button{
+    background:#39ff14;
+    color:black;
+    border:none;
+    padding:12px 18px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+button:hover{
+    opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div id="terminal"></div>
+
+<script>
+
+const terminal=document.getElementById("terminal");
+
+const lines=[
+"WAYNE ENTERPRISES",
+"",
+"CONFIDENTIAL",
+"",
+"Property of:",
+"Batman 🦇",
+"",
+"Security Clearance Required...",
+"",
+"$ sudo boot BatmanOS",
+"",
+"Initializing system...",
+"Loading memories...",
+"Connecting to Batcomputer...",
+"Verifying identity...",
+"",
+"████████████████████ 100%",
+"",
+"ACCESS GRANTED ✓",
+"",
+"Scanning Batman...",
+"",
+"Exam Stress............. DETECTED 📚",
+"Three Wheel............ UNDER REPAIR 🛺",
+"Family Pressure........ HIGH",
+"Strength............... EXCEPTIONAL 💪",
+"Heart.................. RESERVED ❤️",
+"",
+"Favourite Person...",
+"Loading...",
+"Loading...",
+"❤️ Catwoman 🐈‍⬛",
+"",
+"Searching happiness...",
+"FOUND ❤️",
+"",
+"1 encrypted file found.",
+"",
+"love_letter.txt"
+];
+
+let i=0;
+
+function typeLine(){
+
+    if(i<lines.length){
+
+        terminal.innerHTML+=lines[i]+"<br>";
+
+        i++;
+
+        setTimeout(typeLine,400);
+
+    }
+
+    else{
+
+        const btn=document.createElement("button");
+
+        btn.innerHTML="🔐 Decrypt File";
+
+        btn.onclick=function(){
+
+            alert("Batman OS Part 2 Coming Soon 🌌");
+
+        };
+
+        terminal.appendChild(btn);
+
+    }
+
+}
+
+typeLine();
+
+</script>
+
+</body>
+</html>
