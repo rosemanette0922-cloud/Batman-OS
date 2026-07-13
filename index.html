@@ -44,26 +44,83 @@ button:hover{
 
 const terminal=document.getElementById("terminal");
 
-const lines = [
-  "Status: READY FOR DECRYPTION",
-  "WAYNE ENTERPRISES",
-  "",
-  "CONFIDENTIAL",
-  "",
-  "Property of:",
-  "Batman \uD83E\uDD87", // Replace emoji with proper string if needed
-  "",
-  "Security Clearance Required...",
-  "",
-  "$ sudo boot BatmanOS",
-  "",
-  "Initializing Wayne Enterprise Systems...",
-  "Loading Batcomputer...",
-  "Establishing secure connection...",
-  "Authenticating user...",
-  "Checking encrypted memories...",
-  "Loading Gotham database...",
-  "Verifying identity...",
-  "Identity confirmed.",
-  ""
-]; // Place the closing bracket and semicolon at the very end of the list
+const lines=[
+"WAYNE ENTERPRISES",
+"",
+"CONFIDENTIAL",
+"",
+"Property of:",
+"Batman 🦇",
+"",
+"Security Clearance Required...",
+"",
+"$ sudo boot BatmanOS",
+"",
+"Initializing system...",
+"Loading memories...",
+"Connecting to Batcomputer...",
+"Verifying identity...",
+"",
+"████████████████████ 100%",
+"",
+"ACCESS GRANTED ✓",
+"",
+"Scanning Batman...",
+"",
+"Exam Stress............. DETECTED 📚",
+"Three Wheel............ UNDER REPAIR 🛺",
+"Family Pressure........ HIGH",
+"Strength............... EXCEPTIONAL 💪",
+"Heart.................. RESERVED ❤️",
+"",
+"Favourite Person...",
+"Loading...",
+"Loading...",
+"❤️ Catwoman 🐈‍⬛",
+"",
+"Searching happiness...",
+"FOUND ❤️",
+"",
+"1 encrypted file found.",
+"",
+"love_letter.txt"
+];
+
+let i=0;
+
+function typeLine(){
+
+    if(i<lines.length){
+
+        terminal.innerHTML+=lines[i]+"<br>";
+
+        i++;
+
+        setTimeout(typeLine,400);
+
+    }
+
+    else{
+
+        const btn=document.createElement("button");
+
+        btn.innerHTML="🔐 Decrypt File";
+
+        btn.onclick=function(){
+
+            alert("Batman OS Part 2 Coming Soon 🌌");
+
+        };
+
+        terminal.appendChild(btn);
+
+    }
+
+}
+
+typeLine();
+
+</script>
+
+</body>
+</html>
