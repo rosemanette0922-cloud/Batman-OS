@@ -5,111 +5,136 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Batman OS v2.0</title>
+<title>Batman OS v3.0</title>
 
 <style>
 
-#stars{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    overflow:hidden;
-}
-
-.star{
-    position:absolute;
-    width:2px;
-    height:2px;
-    background:white;
-    border-radius:50%;
-    animation:twinkle 2s infinite alternate;
-}
-
-@keyframes twinkle{
-    from{
-        opacity:0.2;
-        transform:scale(1);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1.8);
-    }
-}
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    background:#000;
-    color:#39ff14;
-    font-family:Consolas,monospace;
-    overflow:hidden;
+background:#000;
+color:#39ff14;
+font-family:Consolas,monospace;
+overflow:hidden;
+}
+
+#stars{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+overflow:hidden;
+pointer-events:none;
+z-index:0;
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{
+opacity:.2;
+transform:scale(1);
+}
+to{
+opacity:1;
+transform:scale(2);
+}
+}
+
+.heart{
+position:fixed;
+font-size:20px;
+animation:floatHeart 8s linear forwards;
+pointer-events:none;
+z-index:2;
+}
+
+@keyframes floatHeart{
+
+0%{
+transform:translateY(0) scale(.5);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) scale(1.4);
+opacity:0;
+}
+
 }
 
 #terminal{
-    width:100%;
-    height:100vh;
-    overflow-y:auto;
-    padding:25px;
-    white-space:pre-wrap;
-    font-size:16px;
-    line-height:1.7;
+position:relative;
+z-index:1;
+height:100vh;
+overflow-y:auto;
+padding:25px;
+white-space:pre-wrap;
+font-size:17px;
+line-height:1.8;
+text-shadow:0 0 8px #39ff14;
 }
 
 button{
-    background:#39ff14;
-    color:#000;
-    border:none;
-    padding:12px 24px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:16px;
-    margin-top:25px;
-    transition:.3s;
+
+background:#39ff14;
+color:black;
+border:none;
+padding:14px 28px;
+border-radius:8px;
+font-size:17px;
+cursor:pointer;
+margin-top:25px;
+transition:.3s;
+
 }
 
 button:hover{
-    transform:scale(1.05);
+
+transform:scale(1.06);
+
 }
 
 .fade{
-    animation:fade 1.5s;
+
+animation:fade 1.5s;
+
 }
 
 @keyframes fade{
 
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
+from{opacity:0;}
+to{opacity:1;}
 
 }
 
 .cursor{
-    animation:blink 1s infinite;
+
+animation:blink 1s infinite;
+
 }
 
 @keyframes blink{
 
-    50%{
-        opacity:0;
-    }
+50%{
+opacity:0;
+}
 
 }
 
@@ -120,6 +145,7 @@ button:hover{
 <body>
 
 <div id="stars"></div>
+
 <div id="terminal"></div>
 
 <script>
@@ -130,17 +156,17 @@ const lines=[
 
 "WAYNE ENTERPRISES",
 "",
-"BATCOMPUTER OS v2.0",
+"BATCOMPUTER OS v3.0",
 "",
-"══════════════════════════════",
+"══════════════════════════════════════",
 "",
 "$ sudo boot BatmanOS",
 "",
 "Loading Wayne Enterprise Systems...",
-"Loading Batcomputer...",
+"Connecting to Batcomputer...",
 "Connecting to Gotham Servers...",
-"Checking Secure Files...",
-"Decrypting Memories...",
+"Decrypting Secure Files...",
+"Loading Memories...",
 "",
 "████████████████████ 100%",
 "",
@@ -171,34 +197,35 @@ const lines=[
 "",
 "Status : READY"
 
-];let i = 0;
+];
 
-function typeLine(){
+let index=0;
+    function typeLine(){
 
-    if(i < lines.length){
+    if(index < lines.length){
 
-        terminal.innerHTML += lines[i] + "<br>";
+        terminal.innerHTML += lines[index] + "<br>";
 
         terminal.scrollTop = terminal.scrollHeight;
 
-        i++;
+        index++;
 
-        setTimeout(typeLine, 350);
+        setTimeout(typeLine,300);
 
     }else{
 
-        const btn = document.createElement("button");
+        const btn=document.createElement("button");
 
-        btn.innerHTML = "🔐 Decrypt File";
+        btn.innerHTML="🔐 Decrypt File";
 
-btn.onclick=function(){
+        btn.onclick=function(){
 
-    btn.disabled=true;
-    btn.innerHTML="Decrypting...";
+            btn.disabled=true;
+            btn.innerHTML="Decrypting...";
 
-    decryptFile();
+            decryptFile();
 
-};
+        };
 
         terminal.appendChild(btn);
 
@@ -208,84 +235,149 @@ btn.onclick=function(){
 
 function decryptFile(){
 
-    terminal.classList.add("fade");
+    terminal.className="fade";
 
-    terminal.innerHTML = `
+    terminal.innerHTML=`
+
     <div style="text-align:center;padding-top:120px;">
-        <h1>🌌</h1>
-        <br>
-        <h2>Decrypting love_letter.txt...</h2>
-        <br>
-        <p>Please wait...</p>
+
+    <h1 style="font-size:70px;">🦇</h1>
+
+    <br>
+
+    <h2>Decrypting love_letter.txt...</h2>
+
+    <br>
+
+    <p>Please wait...</p>
+
     </div>
+
     `;
 
     setTimeout(showLetter,2500);
 
 }
 
-function showLetter(){
+function createStars(){
 
-    terminal.innerHTML = `<div style="max-width:750px;margin:50px auto;padding:30px;color:white;line-height:2;font-size:18px;">
+    const stars=document.getElementById("stars");
+
+    stars.innerHTML="";
+
+    for(let i=0;i<150;i++){
+
+        const star=document.createElement("div");
+
+        star.className="star";
+
+        star.style.left=Math.random()*100+"vw";
+
+        star.style.top=Math.random()*100+"vh";
+
+        star.style.animationDelay=Math.random()*2+"s";
+
+        stars.appendChild(star);
+
+    }
+
+}
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.bottom="-30px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function(){
+
+        heart.remove();
+
+    },8000);
+
+    }function showLetter(){
+
+terminal.innerHTML=`
+
+<div style="max-width:750px;margin:40px auto;padding:30px;color:white;line-height:2;font-size:18px;" class="fade">
 
 <h1 style="text-align:center;">🦇 To my loving Batman 🖤🦇</h1>
 
 <br>
 
-<p>I know everything feels so hard these days—your exams, the three-wheeler, family problems... it must all feel like too much sometimes. 🫠❤️‍🩹</p>
+<p>
+I know everything feels so hard these days—your exams, the three-wheeler, family problems... it must all feel like too much sometimes. 🫠❤️‍🩹
+</p>
 
 <br>
 
-<p>But I want you to know that I'm here with you, no matter what, babyy. 🥹🫂 Through better or worse, ups or downs, sickness or health, happiness or sadness, whether you're angry, tired, frustrated, or overwhelmed, I'll always be by your side. 🥰🤍 You've got me, Chuti bbh. 🫂💗</p>
+<p>
+But I want you to know that I'm here with you, no matter what, babyy. 🥹🫂 Through better or worse, ups or downs, sickness or health, happiness or sadness, whether you're angry, tired, frustrated, or overwhelmed, I'll always be by your side. 🥰🤍 You've got me, Chuti bbh. 🫂💗
+</p>
 
 <br>
 
-<p>I believe in you. 😌🤍 I love you, patiyoo. 😘💖 No matter how things turn out, I know my baby gave it his very best, and I'm already so proud of you. 🥳💘</p>
+<p>
+I believe in you. 😌🤍 I love you, patiyoo. 😘💖 No matter how things turn out, I know my baby gave it his very best, and I'm already so proud of you. 🥳💘
+</p>
 
 <br>
 
-<p>You are the strongest, most responsible gentleman I know. You're my hero, my 🐲, my batman, my Chuti bbh. 🤗💗 Always. 🖤🤍</p>
+<p>
+You are the strongest, most responsible gentleman I know. You're my hero, my 🐲, my Batman, my Chuti bbh. 🤗💗 Always. 🖤🤍
+</p>
 
 <br>
 
-<p>Now go and conquer those exams. I'll be right here, cheering for you every step of the way until I can finally hug you again. 🥹❤️</p>
+<p>
+Now go and conquer those exams. I'll be right here, cheering for you every step of the way until I can finally hug you again. 🥹❤️
+</p>
 
 <br>
 
-<p><strong>With love and lots of kisses, 😚💕💋</strong></p>
+<h2>With love and lots of kisses, 😚💕💋</h2>
 
-<p><strong>Yours, forever ♾️</strong></p>
+<h3>Yours, forever ♾️</h3>
 
 <h2 style="text-align:right;">Chuti ammi 🐣</h2>
 
-<br><br>
+<br>
 
-<p style="text-align:center;font-size:14px;opacity:0.7;">
+<p style="text-align:center;opacity:.7;">
 Developed with ❤️ by Catwoman
 </p>
 
 </div>
+
 `;
-for(let i=0;i<120;i++){
 
-    
-}}for(let i=0;i<120;i++){
+createStars();
 
-    const star=document.createElement("div");
+setInterval(createHeart,700);
 
-    star.className="star";
+/* MUSIC
+If you have a music file called music.mp3,
+uncomment these lines:
 
-    star.style.left=Math.random()*100+"vw";
+const music=new Audio("music.mp3");
+music.loop=true;
+music.play();
 
-    star.style.top=Math.random()*100+"vh";
-
-    star.style.animationDelay=Math.random()*2+"s";
-
-    document.getElementById("stars").appendChild(star);
+*/
 
 }
 
-typeLine();typeLine();
+createStars();
+
+typeLine();
 
 </script>
 
