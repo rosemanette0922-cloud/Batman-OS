@@ -6,8 +6,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Batman OS v3.0</title>
-
 <style>
+    #batSignal{
+position:fixed;
+top:50%;
+left:-300px;
+width:220px;
+opacity:.12;
+z-index:0;
+animation:flySignal 18s linear infinite;
+pointer-events:none;
+filter:drop-shadow(0 0 20px white);
+}
+
+@keyframes flySignal{
+0%{
+left:-300px;
+transform:translateY(-50%) rotate(-10deg);
+}
+50%{
+left:50%;
+transform:translate(-50%,-50%) rotate(0deg);
+}
+100%{
+left:110%;
+transform:translateY(-50%) rotate(10deg);
+}
+}
+
 
 *{
 margin:0;
@@ -15,7 +41,12 @@ padding:0;
 box-sizing:border-box;
 }
 
-body{
+body{<div id="stars"></div>
+
+<img id="batSignal"
+src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Batman_logo.svg">
+
+<div id="terminal"></div>
 background:#000;
 color:#39ff14;
 font-family:Consolas,monospace;
