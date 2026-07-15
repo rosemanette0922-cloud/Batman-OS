@@ -420,8 +420,9 @@ musicBtn.onclick = function(){
 
     if(!playing){
 
-        music.play();
-
+        music.play().catch(error => {
+    alert(error);
+});
         playing = true;
 
         musicBtn.innerHTML = "⏸ Pause Music";
