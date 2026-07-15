@@ -161,25 +161,32 @@ transition:.3s;
 background:white;
 color:black;
 }
-
+</style>
 </head>
 
 <body>
 
 <div id="stars"></div>
 
-<div id="player">
 
-<button id="musicBtn">▶ Play Music</button>
-
-</div>
 
 <div id="terminal"></div>
+<div id="player">
+    <button id="musicBtn">🎵 Play Music</button>
+</div>
+
 
 <script>
 
 const terminal=document.getElementById("terminal");
+const music = new Audio("PLAZA_-_All_Mine__Official_Audio_(256k).mp3");
 
+music.loop = true;
+music.volume = 0.35;
+
+const musicBtn = document.getElementById("musicBtn");
+
+let playing = false;
 const lines=[
 
 "WAYNE ENTERPRISES",
@@ -408,6 +415,28 @@ music.play();
 }
 
 createStars();
+
+musicBtn.onclick = function(){
+
+    if(!playing){
+
+        music.play();
+
+        playing = true;
+
+        musicBtn.innerHTML = "⏸ Pause Music";
+
+    }else{
+
+        music.pause();
+
+        playing = false;
+
+        musicBtn.innerHTML = "🎵 Play Music";
+
+    }
+
+};
 
 typeLine();
 
