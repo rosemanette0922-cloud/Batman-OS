@@ -6,8 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Batman OS v3.0</title>
+
 <style>
-    #batSignal{
+
+#batSignal{
 position:fixed;
 top:50%;
 left:-300px;
@@ -34,19 +36,13 @@ transform:translateY(-50%) rotate(10deg);
 }
 }
 
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
 
-body{<div id="stars"></div>
-
-<img id="batSignal"
-src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Batman_logo.svg">
-
-<div id="terminal"></div>
+body{
 background:#000;
 color:#39ff14;
 font-family:Consolas,monospace;
@@ -168,8 +164,7 @@ opacity:0;
 }
 
 }
-
-#player{
+    #player{
 position:fixed;
 top:20px;
 right:20px;
@@ -192,6 +187,7 @@ transition:.3s;
 background:white;
 color:black;
 }
+
 </style>
 </head>
 
@@ -199,17 +195,19 @@ color:black;
 
 <div id="stars"></div>
 
-
+<img id="batSignal"
+src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Batman_logo.svg"
+alt="Bat Signal">
 
 <div id="terminal"></div>
+
 <div id="player">
     <button id="musicBtn">🎵 Play Music</button>
 </div>
 
-
 <script>
 
-const terminal=document.getElementById("terminal");
+const terminal = document.getElementById("terminal");
 const music = new Audio("PLAZA_-_All_Mine__Official_Audio_(256k).mp3");
 
 music.loop = true;
@@ -218,6 +216,7 @@ music.volume = 0.35;
 const musicBtn = document.getElementById("musicBtn");
 
 let playing = false;
+
 const lines=[
 
 "WAYNE ENTERPRISES",
@@ -265,13 +264,12 @@ const lines=[
 
 ];
 
-let index=0;
-    function typeLine(){
+let index = 0;
 
+function typeLine(){
     if(index < lines.length){
 
         terminal.innerHTML += lines[index] + "<br>";
-
         terminal.scrollTop = terminal.scrollHeight;
 
         index++;
@@ -296,7 +294,6 @@ let index=0;
         terminal.appendChild(btn);
 
     }
-
 }
 
 function decryptFile(){
@@ -355,9 +352,9 @@ function createHeart(){
 
     heart.className="heart";
 
-const hearts = ["🖤","🤍"];
+    const hearts=["🖤","🤍"];
 
-heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+    heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
 
     heart.style.left=Math.random()*100+"vw";
 
@@ -371,15 +368,16 @@ heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
 
     },8000);
 
-    }
-    
-    function showLetter(){
+}
+
+function showLetter(){
 
 terminal.innerHTML=`
 
 <div style="max-width:750px;margin:40px auto;padding:30px;color:white;line-height:2;font-size:18px;" class="fade">
 
 <h1 style="text-align:center;">🦇 To my loving Batman 🖤🦇</h1>
+
 
 <br>
 
@@ -390,25 +388,25 @@ I know everything feels so hard these days—your exams, the three-wheeler, fami
 <br>
 
 <p>
-But I want you to know that I'm here with you, no matter what, babyy. 🥹🫂 Through better or worse, ups or downs, sickness or health, happiness or sadness, whether you're angry, tired, frustrated, or overwhelmed, I'll always be by your side. 🥰🤍 You've got me, Chuti bbh. 🫂💗
+But I want you to know that I'm here with you, no matter what, babyy... i know you worked so hard for this, i know you did your best, i know youre dealing with a lot..
 </p>
 
 <br>
 
 <p>
-I believe in you. 😌🤍 I love you, patiyoo. 😘💖 No matter how things turn out, I know my baby gave it his very best, and I'm already so proud of you. 🥳💘
+I believe in you...Through better or worse, ups or downs, sickness or health, happiness or sadness, whether you're angry, tired, frustrated, or overwhelmed, I'll always be by your side. 🥰🤍 You've got me, Chuti bbh. 🫂💗
 </p>
 
 <br>
 
 <p>
-You are the strongest, most responsible gentleman I know. You're my hero, my 🐲, my Batman, my Chuti bbh. 🤗💗 Always. 🖤🤍
+You are the strongest...
 </p>
 
 <br>
 
 <p>
-Now go and conquer those exams. I'll be right here, cheering for you every step of the way until I can finally hug you again. 🥹❤️
+Now go and conquer those exams...
 </p>
 
 <br>
@@ -425,45 +423,53 @@ Now go and conquer those exams. I'll be right here, cheering for you every step 
 Developed with ❤️ by Catwoman
 </p>
 
-</div>
 
+
+<hr style="margin:40px 0;opacity:.3;">
+
+<h2 style="text-align:center;">🦇 SYSTEM MESSAGE 🦇</h2>
+
+<p style="text-align:center;">
+Chuti bbh,<br><br>
+
+No matter what happens...<br>
+No matter how difficult tomorrow becomes...<br>
+No matter how heavy the world feels...<br><br>
+
+You won't face it alone.<br><br>
+
+Status: <b>Catwoman</b><br>
+Loyalty: <b>100%</b><br>
+Location: <b>Right beside you</b><br><br>
+
+<b style="font-size:22px;">I'm on your side. ❤️</b>
+</p> </div>
 `;
 
 createStars();
-
 setInterval(createHeart,700);
-
-/* MUSIC
-If you have a music file called music.mp3,
-uncomment these lines:
-
-const music=new Audio("music.mp3");
-music.loop=true;
-music.play();
-
-*/
 
 }
 
 createStars();
 
-musicBtn.onclick = function(){
+musicBtn.onclick = async function(){
 
     if(!playing){
 
-        music.play().catch(error => {
-    alert(error);
-});
-        playing = true;
-
-        musicBtn.innerHTML = "⏸ Pause Music";
+        try{
+            await music.play();
+            playing = true;
+            musicBtn.innerHTML = "⏸ Pause Music";
+        }catch(error){
+            alert("Music couldn't play. Make sure the MP3 file is uploaded to the same GitHub folder as index.html.");
+            console.log(error);
+        }
 
     }else{
 
         music.pause();
-
         playing = false;
-
         musicBtn.innerHTML = "🎵 Play Music";
 
     }
