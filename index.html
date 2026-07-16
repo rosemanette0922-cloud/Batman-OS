@@ -382,9 +382,6 @@ terminal.innerHTML=`
 
 <div style="max-width:750px;margin:40px auto;padding:30px;color:white;line-height:2;font-size:18px;" class="fade">
 
-<h1 style="text-align:center;">🦇 To my loving Batman 🖤🦇</h1>
-
-
 <br>
 
 <p>
@@ -429,15 +426,6 @@ You are the strongest, most responsible gentleman I know, babii. You're my hero,
 
 <h2 style="text-align:right;">Chuti ammi 🐣</h2>
 
-
-<br>
-
-<p style="text-align:center;opacity:.7;">
-Developed with ❤️ by Catwoman
-</p>
-
-
-
 <hr style="margin:40px 0;opacity:.3;">
 
 <h2 style="text-align:center;">🦇 SYSTEM MESSAGE 🦇</h2>
@@ -456,7 +444,18 @@ Loyalty: <b>100%</b><br>
 Location: <b>Right beside you</b><br><br>
 
 <b style="font-size:22px;">I'm on your side. ❤️</b>
-</p> </div>
+</p>
+
+<br><br>
+
+<div style="text-align:center;">
+<button onclick="shutdownOS()">
+🦇 Shutdown Batcomputer
+</button>
+</div>
+
+</div>
+
 `;
 
 createStars();
@@ -464,34 +463,56 @@ setInterval(createHeart,700);
 
 }
 
-createStars();
+function shutdownOS(){
 
-musicBtn.onclick = async function(){
+terminal.innerHTML = `
 
-    if(!playing){
+<div class="fade" style="max-width:700px;margin:80px auto;color:white;line-height:2;font-size:20px;text-align:center;">
 
-        try{
-            await music.play();
-            playing = true;
-            musicBtn.innerHTML = "⏸ Pause Music";
-        }catch(error){
-            alert("Music couldn't play. Make sure the MP3 file is uploaded to the same GitHub folder as index.html.");
-            console.log(error);
-        }
+<h2>Saving memories...</h2>
+<p>████████████████ 100%</p>
 
-    }else{
+<br>
 
-        music.pause();
-        playing = false;
-        musicBtn.innerHTML = "🎵 Play Music";
+<h2>Encrypting love_letter.txt...</h2>
+<p>████████████████ 100%</p>
+
+<br>
+
+<h2>Deleting temporary sadness...</h2>
+<p>████████████████ 100%</p>
+
+<br><br>
+
+<p>✓ Complete.</p>
+
+<br><br>
+
+<h2>🦇 SYSTEM MESSAGE 🦇</h2>
+
+<p>
+
+Chuti bbh,<br><br>
+
+No matter what happens...<br>
+No matter how difficult tomorrow becomes...<br>
+No matter how heavy the world feels...<br><br>
+
+You won't face it alone.<br><br>
+
+Status: <b>Catwoman</b><br>
+Loyalty: <b>100%</b><br>
+Location: <b>Right beside you</b><br><br>
+
+<b>I'm on your side. ❤️</b>
+
+</p>
+
+</div>
+
+`;
 
     }
-
-};
-
-typeLine();
-
-</script>
 
 </body>
 </html>
